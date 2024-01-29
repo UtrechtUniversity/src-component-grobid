@@ -13,4 +13,27 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-
+  datastet:
+    image: grobid/datastet:0.8.0
+    init: true
+    ports:
+      - "8060:8060"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+  softcite:
+    image: grobid/software-mentions:0.8.0
+    init: true
+    ports:
+      - "8061:8060"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
