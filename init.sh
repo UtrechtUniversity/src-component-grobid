@@ -1,6 +1,6 @@
 #!/bin/bash
 
-compose_location="$( dirname -- "${BASH_SOURCE[0]}" )/docker-compose.yml"
+compose_location="$( dirname -- "${BASH_SOURCE[0]}" )"
 
 cat <<EOF > /etc/systemd/system/grobid.service
 [Unit]
