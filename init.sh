@@ -1,8 +1,7 @@
 #!/bin/bash
 
 cat << EOF > /etc/nginx/app-location-conf.d/grobid.conf
-location /grobid {
-    rewrite /grobid/(.*) /\$1 break;
+location /grobid/ {
     proxy_read_timeout  90s;
     proxy_connect_timeout 300;
     proxy_send_timeout 300;
