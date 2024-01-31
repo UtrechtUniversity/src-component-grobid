@@ -7,6 +7,11 @@ services:
       - "8070:8070"
       - "8071:8071"
     deploy:
+      restart_policy:
+          condition: on-failure
+          delay: 3s
+          max_attempts: 5
+          window: 60s
       resources:
         reservations:
           devices:
@@ -19,6 +24,11 @@ services:
     ports:
       - "8060:8060"
     deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 5
+        window: 60s
       resources:
         reservations:
           devices:
@@ -31,6 +41,11 @@ services:
     ports:
       - "8061:8060"
     deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 5
+        window: 60s
       resources:
         reservations:
           devices:
