@@ -25,3 +25,4 @@ systemctl enable grobid.service
 
 # Fix for oauth with reverse proxies at a subpath
 sed -i 's/oauth2_callback&/oauth2_callback?rdpath=$request_uri\&/' /etc/nginx/app-location-conf.d/authentication.conf
+sed -i 's/return 302 $scheme:\/\/$http_host\//return 302 $scheme:\/\/$http_host$arg_rdpath/' /etc/nginx/app-location-conf.d/authentication.conf
