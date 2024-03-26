@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  softcite:
+    image: grobid/software-mentions:0.8.0
+    init: true
+    ports:
+      - "8061:8060"
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 3s
+        window: 60s
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
