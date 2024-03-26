@@ -1,5 +1,51 @@
 version: "3.7"
-include:
-  - grobid.yml
-  - softcite.yml
-  - datastet.yml
+services:
+  grobid:
+    image: grobid/grobid:0.8.0
+    init: true
+    ports:
+      - "8070:8070"
+      - "8071:8071"
+    deploy:
+      restart_policy:
+          condition: any
+          delay: 3s
+          window: 60s
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+  datastet:
+    image: grobid/datastet:0.8.0
+    init: true
+    ports:
+      - "8060:8060"
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 3s
+        window: 60s
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+  softcite:
+    image: grobid/software-mentions:0.8.0
+    init: true
+    ports:
+      - "8061:8060"
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 3s
+        window: 60s
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
