@@ -8,7 +8,7 @@ services:
       - "8071:8071"
     deploy:
       restart_policy:
-          condition: always
+          condition: any
           delay: 3s
           max_attempts: 5
           window: 60s
@@ -25,7 +25,7 @@ services:
       - "8060:8060"
     deploy:
       restart_policy:
-        condition: always
+        condition: any
         delay: 3s
         max_attempts: 5
         window: 60s
@@ -42,7 +42,7 @@ services:
       - "8061:8060"
     deploy:
       restart_policy:
-        condition: always
+        condition: any
         delay: 3s
         max_attempts: 5
         window: 60s
