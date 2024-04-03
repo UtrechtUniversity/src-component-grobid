@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 compose_location="$( dirname -- "${BASH_SOURCE[0]}" )"
 
