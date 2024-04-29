@@ -1,7 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+compose_file="$1"
 compose_location="$( dirname -- "${BASH_SOURCE[0]}" )"
+
+echo "$compose_file"
 
 cat <<EOF > /etc/systemd/system/grobid.service
 [Unit]
@@ -12,8 +15,8 @@ StartLimitIntervalSec=60
 
 [Service]
 WorkingDirectory=$compose_location
-ExecStart=/usr/local/bin/docker-compose up
-ExecStop=/usr/local/bin/docker-compose down
+ExecStart=/usr/local/bin/docker-compose -f $compose_file up
+ExecStop=/usr/local/bin/docker-compose -f $compose_file down
 TimeoutStartSec=0
 Restart=on-failure
 StartLimitBurst=3
