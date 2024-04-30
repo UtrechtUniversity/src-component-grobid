@@ -4,7 +4,7 @@ set -euo pipefail
 compose_file="$1"
 compose_location="$( dirname -- "${BASH_SOURCE[0]}" )"
 
-echo "$compose_file"
+echo "Grobid Component: running init script for compose file $compose_file"
 
 cat <<EOF > /etc/systemd/system/grobid.service
 [Unit]
